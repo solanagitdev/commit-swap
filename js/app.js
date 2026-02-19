@@ -1,8 +1,8 @@
 (() => {
   const CONFIG = {
-    outputMint: "REPLACE_WITH_COMMIT_COIN_MINT",
+    outputMint: "AV6oUgDdgPMW1UKwPM8RtRwmaNE93XJFmmkAt8uwpump",
     feeBps: 30,
-    feeAccount: "REPLACE_WITH_FEE_ACCOUNT",
+    feeAccount: "3Yrjc2faTdEvgxxtnnNCixKScufZZcTCaqrxP9dNra4J",
     rpcUrl: "https://api.mainnet-beta.solana.com",
     quoteApi: "https://lite-api.jup.ag/swap/v1/quote",
     swapApi: "https://lite-api.jup.ag/swap/v1/swap"

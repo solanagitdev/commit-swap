@@ -18,6 +18,12 @@ It is designed to let users swap into commit-coin directly from a static, transp
 `commit-coin` is the fixed output token on this interface.  
 Swaps on commit-swap are routed so the destination asset is always commit-coin.
 
+Token address:
+`AV6oUgDdgPMW1UKwPM8RtRwmaNE93XJFmmkAt8uwpump`
+
+Solscan:
+https://solscan.io/token/AV6oUgDdgPMW1UKwPM8RtRwmaNE93XJFmmkAt8uwpump
+
 ## 90% Daily Redistribution Messaging
 
 commit-swap communicates a model where **90% of swap fees generated through this page are redistributed daily**.
