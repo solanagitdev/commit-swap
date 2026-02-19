@@ -26,6 +26,14 @@ Transparency note:
 - This repository contains frontend messaging only.
 - No backend redistribution automation or payout logic is included in this repo.
 
+## Fee Wallet
+
+Platform fee wallet:
+`3Yrjc2faTdEvgxxtnnNCixKScufZZcTCaqrxP9dNra4J`
+
+Solscan:
+https://solscan.io/account/3Yrjc2faTdEvgxxtnnNCixKScufZZcTCaqrxP9dNra4J
+
 ## Key Features
 
 - GitHub-native static site (HTML + vanilla JS)
