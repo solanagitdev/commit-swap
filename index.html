@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>commit-swap | Buy commit-coin</title>
+    <meta
+      name="description"
+      content="commit-swap is a GitHub-native Solana swap page to buy commit-coin with SOL or USDC."
+    />
+    <style>
+      :root {
+        --bg: #0d1117;
+        --panel: #161b22;
+        --panel-2: #0f141b;
+        --border: #30363d;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --accent: #2f81f7;
+        --accent-2: #1f6feb;
+        --success: #238636;
+        --danger: #f85149;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        background: radial-gradient(circle at top, #161b22 0%, var(--bg) 55%);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      .shell {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px 16px 48px;
+      }
+
+      .header {
+        margin-bottom: 20px;
+        border: 1px solid var(--border);
+        background: rgba(22, 27, 34, 0.75);
+        border-radius: 16px;
+        padding: 18px;
+        backdrop-filter: blur(6px);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.55rem, 2.2vw, 2.1rem);
+        letter-spacing: 0.01em;
+      }
+
+      .tagline {
+        margin: 12px 0 0;
+        color: #c9d1d9;
+        font-weight: 600;
+      }
+
+      .subtext {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .panel {
+        background: linear-gradient(180deg, var(--panel), var(--panel-2));
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px;
+      }
+
+      .panel h2 {
+        margin: 0 0 14px;
+        font-size: 1.02rem;
+      }
+
+      .row {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+      }
+
+      label {
+        font-size: 0.83rem;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input,
+      select,
+      button {
+        font: inherit;
+      }
+
+      input,
+      select {
+        width: 100%;
+        background: #0d1117;
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 11px 12px;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: var(--accent);
+        outline: none;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      button {
+        border: 1px solid transparent;
+        border-radius: 10px;
+        padding: 10px 14px;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--accent-2);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent);
+      }
+
+      .btn-secondary {
+        background: #21262d;
+        border-color: var(--border);
+      }
+
+      .btn-secondary:hover {
+        background: #30363d;
+      }
+
+      .status {
+        margin-top: 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+
+      .status.info {
+        color: #c9d1d9;
+      }
+
+      .status.success {
+        color: #aff5b4;
+        border-color: rgba(35, 134, 54, 0.5);
+        background: rgba(35, 134, 54, 0.12);
+      }
+
+      .status.error {
+        color: #ffd8d5;
+        border-color: rgba(248, 81, 73, 0.5);
+        background: rgba(248, 81, 73, 0.12);
+      }
+
+      .facts {
+        margin: 0;
+        padding-left: 18px;
+        color: #c9d1d9;
+      }
+
+      .facts li {
+        margin: 8px 0;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.86rem;
+        color: #9ecbff;
+      }
+
+      footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      @media (min-width: 860px) {
+        .grid {
+          grid-template-columns: 1.25fr 1fr;
+        }
+
+        .row.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="header">
+        <h1>commit-swap</h1>
+        <p class="tagline">Buy commit-coin through commit-swap and earn daily fee redistribution.</p>
+        <p class="subtext">
+          Swap SOL or USDC for commit-coin using Jupiter routing. This interface is fully non-custodial and works as a static GitHub Pages site.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Swap</h2>
+          <div class="row two">
+            <div>
+              <label for="inputMint">Pay With</label>
+              <select id="inputMint">
+                <option value="So11111111111111111111111111111111111111112">SOL</option>
+                <option value="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">USDC</option>
+              </select>
+            </div>
+            <div>
+              <label for="amount">Amount</label>
+              <input id="amount" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 0.25" />
+            </div>
+          </div>
+
+          <div class="row two" style="margin-top: 12px;">
+            <div>
+              <label for="slippage">Slippage (%)</label>
+              <input id="slippage" type="number" inputmode="decimal" min="0.1" step="0.1" value="1" />
+            </div>
+            <div>
+              <label>Receive</label>
+              <input id="outputMint" type="text" readonly value="REPLACE_WITH_COMMIT_COIN_MINT" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="connectBtn" class="btn-secondary" type="button">Connect Wallet</button>
+            <button id="quoteBtn" class="btn-secondary" type="button">Preview Quote</button>
+            <button id="swapBtn" class="btn-primary" type="button">Swap Now</button>
+          </div>
+
+          <div id="status" class="status info">Connect a wallet to start.</div>
+        </article>
+
+        <aside class="panel">
+          <h2>Protocol Notes</h2>
+          <ul class="facts">
+            <li>Output mint is fixed to commit-coin.</li>
+            <li>Swap path and liquidity are provided by Jupiter API.</li>
+            <li>Default integrator fee: <span id="feeReadout">0.30%</span> (configurable).</li>
+            <li>90% of fees generated by this page are redistributed daily (messaging model).</li>
+          </ul>
+          <p class="subtext">
+            Current fee account: <span id="feeAccount" class="mono">REPLACE_WITH_FEE_ACCOUNT</span>
+          </p>
+          <p class="subtext">
+            Set your live mint in <span class="mono">js/app.js</span> before production launch.
+          </p>
+        </aside>
+      </section>
+
+      <footer>
+        Not financial advice. Use at your own risk. Always verify token mint addresses before swapping.
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/@solana/web3.js@1.98.2/lib/index.iife.min.js"></script>
+    <script src="./js/app.js" defer></script>
+  </body>
+</html>
